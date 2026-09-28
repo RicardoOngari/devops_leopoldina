@@ -43,6 +43,7 @@ jobs:
         uses: actions/deploy-pages@v5
 
   DOCKER:
+    needs: Menssagem
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
