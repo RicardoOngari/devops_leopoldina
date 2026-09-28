@@ -1,6 +1,6 @@
 name: Primeiro CI
 
-on: 
+on:
   push:
     branches: [main]
   pull_request:
@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   Menssagem:
-    #criar a maquina virtual
+    # criar a maquina virtual
     runs-on: ubuntu-latest
 
     steps:
