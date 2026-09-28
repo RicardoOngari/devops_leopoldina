@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova — Experiência Digital</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #080b14;
+      --card: #111625;
+      --primary: #7c5cff;
+      --secondary: #00d4ff;
+      --text: #f5f7ff;
+      --muted: #9ca6c5;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124, 92, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(0, 212, 255, 0.12), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 100%;
+      padding: 24px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 28px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      min-height: 75vh;
+      padding: 100px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .hero-text {
+      max-width: 620px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(124, 92, 255, 0.4);
+      background: rgba(124, 92, 255, 0.1);
+      border-radius: 50px;
+      color: #bdb1ff;
+      font-size: 0.85rem;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 550px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #6245df);
+      box-shadow: 0 10px 30px rgba(124, 92, 255, 0.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(124, 92, 255, 0.4);
+    }
+
+    .secondary {
+      color: white;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .orb {
+      width: 300px;
+      height: 300px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c5cff, #00d4ff);
+      filter: blur(1px);
+      box-shadow:
+        0 0 80px rgba(124, 92, 255, 0.35),
+        inset -30px -20px 60px rgba(0,0,0,0.25);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 30px 100px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(17, 22, 37, 0.75);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 30px;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(124, 92, 255, 0.4);
+    }
+
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        padding: 20px;
+      }
+
+      nav div:last-child {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 70px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .orb {
+        width: 200px;
+        height: 200px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">N<span>O</span>VA</div>
+
+    <div>
+      <a href="#inicio">Início</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#sobre">Sobre</a>
+    </div>
+  </nav>
+
+  <main id="inicio">
+    <section class="hero">
+
+      <div class="hero-text">
+        <div class="badge">✦ Projeto de teste no GitHub</div>
+
+        <h1>
+          Ideias que viram
+          <span>experiência.</span>
+        </h1>
+
+        <p>
+          Um pequeno projeto criado para testar HTML, CSS, responsividade
+          e um pouco de JavaScript em uma página moderna.
+        </p>
+
+        <div class="buttons">
+          <button class="primary" onclick="mostrarMensagem()">
+            Explorar projeto
+          </button>
+
+          <button class="secondary" onclick="window.scrollTo({top: 700, behavior: 'smooth'})">
+            Ver recursos
+          </button>
+        </div>
+      </div>
+
+      <div class="orb"></div>
+
+    </section>
+
+    <section class="features" id="recursos">
+
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Rápido</h3>
+        <p>
+          Página leve, sem frameworks e fácil de modificar.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Bonito</h3>
+        <p>
+          Gradientes, animações e efeito glassmorphism para um visual moderno.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>Responsivo</h3>
+        <p>
+          Funciona em computadores, tablets e celulares.
+        </p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer id="sobre">
+    Feito para testar o GitHub Pages · © 2026 Nova
+  </footer>
+
+  <script>
+    function mostrarMensagem() {
+      alert("🚀 Funcionou! Seu JavaScript está funcionando.");
+    }
+  </script>
+
+</body>
+</html>
