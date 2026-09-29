@@ -61,6 +61,6 @@ jobs:
         uses: docker/build-push-action@v7.4.0
         with:
           context: .
-          file: dockerfile
+          file: ./dockerfile
           push: true
           tags: ricardoongari/img-revolucao:1.0
